@@ -1,4 +1,4 @@
-import yfinance
+import yfinance as yf
 from stocks import *
 #import strategy1
 #import strategy2
