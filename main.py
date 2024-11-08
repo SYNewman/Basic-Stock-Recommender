@@ -1,12 +1,16 @@
-#import yfinance
-import stock_lists
+import yfinance
+from stocks import *
 #import strategy1
 #import strategy2
 #etc.
 
-#i need to loop through every list in stock_lists.py
-#for each list i need to loop through each item in the list
-
-for list in stock_lists:
-    for item in list:
-        print(item)
+for i in list_of_stocks:
+    print(i)
+    ticker = yfinance.Ticker(i)
+    current_price = ticker.info["regularMarketPrice"]
+    high_price = ticker.info["regularMarketDayHigh"]
+    low_price = ticker.info["regularMarketDayLow"]
+    open_price = ticker.info["regularMarketOpen"]
+    close_price = ticker.info["regularMarketPreviousClose"]
+    volume = ticker.info["regularMarketVolume"]
+    print(current_price, high_price, low_price, open_price, close_price, volume)

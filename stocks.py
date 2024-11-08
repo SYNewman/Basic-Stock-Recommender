@@ -1,2 +1,1 @@
-one = ["one", "two", "three"]
-two = ["four", "five", "six"]
+list_of_stocks = ["AAPL", "MSFT", "AMZN", "GOOG", "FB", "TSLA"]
