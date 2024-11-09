@@ -1,1 +1,1 @@
-list_of_stocks = ["AAPL", "MSFT", "AMZN", "GOOG", "FB", "TSLA"]
+list_of_stocks = ["AAPL", "MSFT", "AMZN", "GOOG", "META", "TSLA"]
