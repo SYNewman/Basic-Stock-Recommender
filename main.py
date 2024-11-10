@@ -6,11 +6,9 @@ import moving_averages
 import sma
 import mean_reversion
 
-
 bought_stocks = []
 sold_stocks = []
 time = datetime.now() # Calculates the exact time
-
 
 def remove_duplicates(list): # Function to remove duplicates from the list
     return list(set(list))
@@ -21,9 +19,7 @@ def remove_stocks_in_both_lists(bought_stocks, sold_stocks): # Function to remov
             bought_stocks.remove(i)
             sold_stocks.remove(i)
 
-
 for i in list_of_stocks: # Main program
-    
     # Gets main data for each stock
     stock = yf.Ticker(i)
     ticker = stock.info['symbol']
@@ -41,7 +37,6 @@ for i in list_of_stocks: # Main program
     sma.SMA(bought_stocks, sold_stocks, ticker, short_ma, long_ma)
     mean_reversion.mean_reversion(bought_stocks, sold_stocks, ticker, price, short_ma)
     
-
 #remove_duplicates(bought_stocks)
 #remove_duplicates(sold_stocks)
 
