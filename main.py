@@ -1,9 +1,7 @@
 import yfinance as yf
 import pandas as pd
 from stocks import *
-#import strategy1
-#import strategy2
-#etc.
+import moving_averages
 
 for i in list_of_stocks:
     ticker = yf.Ticker(i)
@@ -16,9 +14,7 @@ for i in list_of_stocks:
     short_ma = data['Short_MA'].iloc[-1]
     long_ma = data['Long_MA'].iloc[-1]
     
-    #strategy1.strategy1(current_price, high_price, low_price, open_price, close_price, volume)
-    #strategy2.strategy2(current_price, high_price, low_price, open_price, close_price, volume)
-    #etc.
+    moving_averages.moving_averages(price, short_ma, long_ma)
     
 '''
 next steps:
