@@ -19,7 +19,7 @@ for i in list_of_stocks: # Main program
     price = stock.fast_info['last_price']
     data = stock.history(period="1y")
     
-    # Gets data for moving averages strategy
+    # Gets data for moving averages and mean reversion strategies
     data['Short_MA'] = data['Close'].rolling(window=50).mean()  # Calculates the 50-day SMA
     data['Long_MA'] = data['Close'].rolling(window=200).mean() # Calculates the 200-day SMA
     short_ma = data['Short_MA'].iloc[-1]
@@ -35,6 +35,12 @@ print("Run at: ", time) # Prints the time which the programme was run at
 
 
 '''
+To-do:
+- add more stocks
+- add more strategies
+- remove duplicates from lists
+- (add function to add stocks to list of bought/sold stocks)
+
 next steps:
 - main app
     - add more stocks
