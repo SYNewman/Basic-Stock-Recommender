@@ -1,0 +1,2 @@
+def SMA():
+    pass
