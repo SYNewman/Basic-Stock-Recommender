@@ -8,7 +8,7 @@ import sma
 
 bought_stocks = []
 sold_stocks = []
-time = datetime.now()
+time = datetime.now() # Calculates the exact time
 
 
 for i in list_of_stocks: # Main program
@@ -19,8 +19,8 @@ for i in list_of_stocks: # Main program
     data = ticker.history(period="1y")
     
     # Gets data for moving averages strategy
-    data['Short_MA'] = data['Close'].rolling(window=50).mean()  # 50-day SMA
-    data['Long_MA'] = data['Close'].rolling(window=200).mean() # 200-day SMA
+    data['Short_MA'] = data['Close'].rolling(window=50).mean()  # Calculates the 50-day SMA
+    data['Long_MA'] = data['Close'].rolling(window=200).mean() # Calculates the 200-day SMA
     short_ma = data['Short_MA'].iloc[-1]
     long_ma = data['Long_MA'].iloc[-1]
     
@@ -28,8 +28,9 @@ for i in list_of_stocks: # Main program
     moving_averages.moving_averages(price, short_ma, long_ma)
     sma.SMA(short_ma, long_ma)
     
-    print("\n\n", "Buy these stocks: ", bought_stocks, "\n", "Sell these stocks: ", sold_stocks, "\n\n")
-    print("Run at: ", time)
+    print("\n\n", "Buy these stocks: ", bought_stocks, "\n") # Prints the list of bought stocks
+    print("Sell these stocks: ", sold_stocks, "\n\n") # Prints the list of sold stocks
+    print("Run at: ", time) # Prints the time which the programme was run at
 
 
 '''
