@@ -1,5 +1,6 @@
 import yfinance as yf
 import pandas as pd
+from datetime import datetime
 from stocks import *
 import moving_averages
 import sma
@@ -7,6 +8,7 @@ import sma
 
 bought_stocks = []
 sold_stocks = []
+time = datetime.now()
 
 
 for i in list_of_stocks: # Main program
@@ -27,6 +29,7 @@ for i in list_of_stocks: # Main program
     sma.SMA(short_ma, long_ma)
     
     print("\n\n", "Buy these stocks: ", bought_stocks, "\n", "Sell these stocks: ", sold_stocks, "\n\n")
+    print("Run at: ", time)
 
 
 '''
