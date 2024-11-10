@@ -1,3 +1,4 @@
+# This code runs the logic for the moving averages strategy
 def moving_averages(bought_stocks, sold_stocks, ticker, price, short_ma, long_ma):
     
     # Code to generate a buy signal
