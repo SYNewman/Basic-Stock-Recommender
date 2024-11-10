@@ -12,6 +12,10 @@ sold_stocks = []
 time = datetime.now() # Calculates the exact time
 
 
+def remove_duplicates(list): # Function to remove duplicates from the list
+    return list(set(list))
+
+
 for i in list_of_stocks: # Main program
     
     # Gets main data for each stock
@@ -31,28 +35,24 @@ for i in list_of_stocks: # Main program
     sma.SMA(bought_stocks, sold_stocks, ticker, short_ma, long_ma)
     mean_reversion.mean_reversion(bought_stocks, sold_stocks, ticker, price, short_ma)
     
+
+remove_duplicates(bought_stocks)
+remove_duplicates(sold_stocks)
+    
 print("\n", "Buy: ", bought_stocks) # Prints the list of bought stocks
 print(" Sell: ", sold_stocks, "\n") # Prints the list of sold stocks
 print("Run at: ", time) # Prints the time which the programme was run at
 
 
 '''
-To-do:
-- add more stocks
-- add more strategies
-- remove duplicates from lists
-- (add function to add stocks to list of bought/sold stocks)
-
 next steps:
 - main app
     - add more stocks
-    - add strategies
-    - edit for loop so that it actually gets the data for each stock
-    - make sure that this data is relevant for the strategies being implemented
-- List of strategies to implement:
-    - strategy1
-    - strategy2
-    - etc.
+    - add RSI strategy
+    - (add MACD strategy)
+    - add Bollinger Bands strategy
+    - remove duplicates from lists
+    - (add function to add stocks to list of bought/sold stocks)
 - test
 - make more advanced
     - add oop
