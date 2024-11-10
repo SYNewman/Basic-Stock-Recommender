@@ -2,6 +2,7 @@ import yfinance as yf
 import pandas as pd
 from stocks import *
 import moving_averages
+import sma
 
 
 bought_stocks = []
@@ -23,6 +24,7 @@ for i in list_of_stocks: # Main program
     
     # Runs each strategy
     moving_averages.moving_averages(price, short_ma, long_ma)
+    sma.SMA(short_ma, long_ma)
 
 
 '''
