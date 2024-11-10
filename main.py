@@ -30,7 +30,7 @@ for i in list_of_stocks: # Main program
     sma.SMA(bought_stocks, sold_stocks, ticker, short_ma, long_ma)
     
 print("\n\n", "Buy these stocks: ", bought_stocks, "\n") # Prints the list of bought stocks
-print("Sell these stocks: ", sold_stocks, "\n\n") # Prints the list of sold stocks
+print(" Sell these stocks: ", sold_stocks, "\n\n") # Prints the list of sold stocks
 print("Run at: ", time) # Prints the time which the programme was run at
 
 
