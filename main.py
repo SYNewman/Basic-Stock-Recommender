@@ -25,6 +25,8 @@ for i in list_of_stocks: # Main program
     # Runs each strategy
     moving_averages.moving_averages(price, short_ma, long_ma)
     sma.SMA(short_ma, long_ma)
+    
+    print("\n\n", "Buy these stocks: ", bought_stocks, "\n", "Sell these stocks: ", sold_stocks, "\n\n")
 
 
 '''
