@@ -3,6 +3,9 @@ import pandas as pd
 from stocks import *
 import moving_averages
 
+bought_stocks = []
+sold_stocks = []
+
 for i in list_of_stocks:
     ticker = yf.Ticker(i)
     price = ticker.fast_info['last_price']
