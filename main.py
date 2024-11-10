@@ -14,9 +14,10 @@ time = datetime.now() # Calculates the exact time
 for i in list_of_stocks: # Main program
     
     # Gets main data for each stock
-    ticker = yf.Ticker(i)
-    price = ticker.fast_info['last_price']
-    data = ticker.history(period="1y")
+    stock = yf.Ticker(i)
+    ticker = stock.info['symbol']
+    price = stock.fast_info['last_price']
+    data = stock.history(period="1y")
     
     # Gets data for moving averages strategy
     data['Short_MA'] = data['Close'].rolling(window=50).mean()  # Calculates the 50-day SMA
