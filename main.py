@@ -4,6 +4,7 @@ from datetime import datetime
 from stocks import *
 import moving_averages
 import sma
+import mean_reversion
 
 
 bought_stocks = []
@@ -28,6 +29,7 @@ for i in list_of_stocks: # Main program
     # Runs each strategy
     moving_averages.moving_averages(bought_stocks, sold_stocks, ticker, price, short_ma, long_ma)
     sma.SMA(bought_stocks, sold_stocks, ticker, short_ma, long_ma)
+    mean_reversion.mean_reversion(bought_stocks, sold_stocks, ticker, price, short_ma)
     
 print("\n", "Buy: ", bought_stocks) # Prints the list of bought stocks
 print(" Sell: ", sold_stocks, "\n") # Prints the list of sold stocks
