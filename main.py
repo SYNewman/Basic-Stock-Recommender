@@ -3,10 +3,14 @@ import pandas as pd
 from stocks import *
 import moving_averages
 
+
 bought_stocks = []
 sold_stocks = []
 
-for i in list_of_stocks:
+
+for i in list_of_stocks: # Main program
+    
+    # Gets main data for each stock
     ticker = yf.Ticker(i)
     price = ticker.fast_info['last_price']
     data = ticker.history(period="1y")
@@ -17,8 +21,10 @@ for i in list_of_stocks:
     short_ma = data['Short_MA'].iloc[-1]
     long_ma = data['Long_MA'].iloc[-1]
     
+    # Runs each strategy
     moving_averages.moving_averages(price, short_ma, long_ma)
-    
+
+
 '''
 next steps:
 - main app
