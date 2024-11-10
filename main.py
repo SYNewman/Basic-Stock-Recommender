@@ -16,10 +16,6 @@ for i in list_of_stocks:
     short_ma = data['Short_MA'].iloc[-1]
     long_ma = data['Long_MA'].iloc[-1]
     
-    print(i, price)
-    print(f"50-Day Moving Average (Short): ${short_ma:.2f}")
-    print(f"200-Day Moving Average (Long): ${long_ma:.2f}", "\n")
-    
     #strategy1.strategy1(current_price, high_price, low_price, open_price, close_price, volume)
     #strategy2.strategy2(current_price, high_price, low_price, open_price, close_price, volume)
     #etc.
