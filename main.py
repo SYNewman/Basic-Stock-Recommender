@@ -11,7 +11,12 @@ sold_stocks = []
 time = datetime.now() # Calculates the exact time
 
 def remove_duplicates(list): # Function to remove duplicates from the list
-    return list(set(list))
+    for i in list:
+        amount = list.count(i)
+        if amount > 1:
+            while amount > 1:
+                list.remove(i)
+                amount = list.count(i)
 
 def remove_stocks_in_both_lists(bought_stocks, sold_stocks): # Function to remove stocks which appear in both lists
     for i in bought_stocks:
@@ -37,8 +42,8 @@ for i in list_of_stocks: # Main program
     sma.SMA(bought_stocks, sold_stocks, ticker, short_ma, long_ma)
     mean_reversion.mean_reversion(bought_stocks, sold_stocks, ticker, price, short_ma)
     
-#remove_duplicates(bought_stocks)
-#remove_duplicates(sold_stocks)
+remove_duplicates(bought_stocks)
+remove_duplicates(sold_stocks)
 
 remove_stocks_in_both_lists(bought_stocks, sold_stocks)
     
@@ -54,8 +59,6 @@ next steps:
     - add RSI strategy
     - (add MACD strategy)
     - add Bollinger Bands strategy
-    - remove duplicates from lists
-    - remove list items which appear in both lists
     - (add function to add stocks to list of bought/sold stocks)
 - test
 - make more advanced
