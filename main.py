@@ -5,6 +5,7 @@ from stocks import *
 import moving_averages
 import sma
 import mean_reversion
+import RSI
 
 bought_stocks = []
 sold_stocks = []
@@ -41,6 +42,7 @@ for i in list_of_stocks: # Main program
     moving_averages.moving_averages(bought_stocks, sold_stocks, ticker, price, short_ma, long_ma)
     sma.SMA(bought_stocks, sold_stocks, ticker, short_ma, long_ma)
     mean_reversion.mean_reversion(bought_stocks, sold_stocks, ticker, price, short_ma)
+    RSI.RSI(bought_stocks, sold_stocks, ticker, price)
     
 remove_duplicates(bought_stocks)
 remove_duplicates(sold_stocks)
