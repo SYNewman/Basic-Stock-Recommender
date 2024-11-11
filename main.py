@@ -50,7 +50,7 @@ remove_duplicates(sold_stocks)
 remove_stocks_in_both_lists(bought_stocks, sold_stocks)
     
 print("\n", "Buy: ", bought_stocks) # Prints the list of bought stocks
-print(" Sell: ", sold_stocks, "\n") # Prints the list of sold stocks
+print(" Sell:", sold_stocks, "\n") # Prints the list of sold stocks
 print("Run at: ", time) # Prints the time which the programme was run at
 
 
