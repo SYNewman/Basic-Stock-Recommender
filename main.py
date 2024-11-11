@@ -42,7 +42,7 @@ for i in list_of_stocks: # Main program
     moving_averages.moving_averages(bought_stocks, sold_stocks, ticker, price, short_ma, long_ma)
     SMA.SMA(bought_stocks, sold_stocks, ticker, short_ma, long_ma)
     mean_reversion.mean_reversion(bought_stocks, sold_stocks, ticker, price, short_ma)
-    RSI.RSI(bought_stocks, sold_stocks, ticker, price)
+    RSI.RSI(bought_stocks, sold_stocks, ticker, stock, price)
     
 remove_duplicates(bought_stocks)
 remove_duplicates(sold_stocks)
