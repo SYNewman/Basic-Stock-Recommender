@@ -39,11 +39,18 @@ for i in list_of_stocks: # Main program
     short_ma = data['Short_MA'].iloc[-1]
     long_ma = data['Long_MA'].iloc[-1]
     
+    # Code to calculate the RSI
+    delta = data['Close'].diff()
+    average_gains = (delta.where(delta > 0, 0)).rolling(window=14).mean()
+    average_losses = (-delta.where(delta < 0, 0)).rolling(window=14).mean()
+    RS_value = average_gains / average_losses
+    RSI_value = 100 - (100 / (1 + RS_value))
+    
     # Runs each strategy
     moving_averages.moving_averages(bought_stocks, sold_stocks, ticker, price, short_ma, long_ma)
     SMA.SMA(bought_stocks, sold_stocks, ticker, short_ma, long_ma)
     mean_reversion.mean_reversion(bought_stocks, sold_stocks, ticker, price, short_ma)
-    RSI.RSI(data, bought_stocks, sold_stocks, ticker, stock, price)
+    RSI.RSI(data, bought_stocks, sold_stocks, ticker, stock, price, RSI_value)
     bollinger_bands.bollinger_bands(bought_stocks, sold_stocks, ticker, price)
     
 remove_duplicates(bought_stocks)
