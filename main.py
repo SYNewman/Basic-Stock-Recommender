@@ -44,7 +44,7 @@ for i in list_of_stocks: # Main program
     SMA.SMA(bought_stocks, sold_stocks, ticker, short_ma, long_ma)
     mean_reversion.mean_reversion(bought_stocks, sold_stocks, ticker, price, short_ma)
     RSI.RSI(data, bought_stocks, sold_stocks, ticker, stock, price)
-    bollinger_bands.bollinger_bands()
+    bollinger_bands.bollinger_bands(bought_stocks, sold_stocks, ticker, price)
     
 remove_duplicates(bought_stocks)
 remove_duplicates(sold_stocks)
