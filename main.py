@@ -75,7 +75,6 @@ print("Run at: ", time) # Prints the time which the programme was run at
 next steps:
 - main app
     - add more stocks
-    - add RSI strategy
     - add Bollinger Bands strategy
     - (add function to add stocks to list of bought/sold stocks)
 - test
