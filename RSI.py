@@ -1,8 +1,3 @@
-# This code runs the logic for the RSI strategy
-
-import yfinance as yf
-import pandas as pd
-
 def RSI(data,bought_stocks, sold_stocks, ticker, stock, price, RSI_value):
     # Generates buy/sell signal
     if (RSI_value > 70).any():
