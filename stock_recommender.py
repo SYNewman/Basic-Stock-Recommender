@@ -1,12 +1,10 @@
 import yfinance as yf
-import pandas as pd
 from datetime import datetime
 from functions import *
 from stocks import *
 import SMA
 import RSI
 import moving_averages
-import mean_reversion
 import bollinger_bands
 
 # Function to recommend stocks
@@ -36,19 +34,29 @@ def recommend(buy_signal, sell_signal, bought_stocks, sold_stocks, list_of_stock
         RSI_value = 100 - (100 / (1 + RS_value))
         
         # Gets the data needed for the bollinger bands strategy
-        data['Middle_band'] = data['Close'].rolling(window=20).mean()
+        #data['Middle_band'] = data['Close'].rolling(window=20).mean()
         data['Upper_band'] = data['Middle_band'] + (data['Close'].rolling(window=20).std() * 2)
         data['Lower_band'] = data['Middle_band'] - (data['Close'].rolling(window=20).std() * 2)
         upper_band = data['Upper_band'].iloc[-1]
-        middle_band = data['Middle_band'].iloc[-1]
+        #middle_band = data['Middle_band'].iloc[-1]
         lower_band = data['Lower_band'].iloc[-1]
         
         # Runs each strategy
-        moving_averages.moving_averages(buy_signal, sell_signal, bought_stocks, sold_stocks, ticker, price, short_ma, long_ma)
-        SMA.SMA(buy_signal, sell_signal, bought_stocks, sold_stocks, ticker, short_ma, long_ma)
-        #mean_reversion.mean_reversion(buy_signal, sell_signal, bought_stocks, sold_stocks, ticker, price, upper_bound, lower_bound)
-        RSI.RSI(buy_signal, sell_signal, data, bought_stocks, sold_stocks, ticker, stock, price, RSI_value)
-        bollinger_bands.bollinger_bands(buy_signal, sell_signal, bought_stocks, sold_stocks, ticker, price, upper_band, middle_band, lower_band)
+        moving_averages.moving_averages(
+            buy_signal, sell_signal, bought_stocks, sold_stocks,
+            ticker, price, short_ma, long_ma)
+        SMA.SMA(
+            buy_signal, sell_signal, bought_stocks, sold_stocks,
+            ticker, short_ma, long_ma)
+        #mean_reversion.mean_reversion(
+            # buy_signal, sell_signal, bought_stocks, sold_stocks,
+            # ticker, price, upper_bound, lower_bound)
+        RSI.RSI(
+            buy_signal, sell_signal, data, bought_stocks, sold_stocks,
+            ticker, stock, price, RSI_value)
+        bollinger_bands.bollinger_bands(
+            buy_signal, sell_signal, bought_stocks, sold_stocks,
+            ticker, price, upper_band, lower_band)
     
     remove_duplicates(bought_stocks)
     remove_duplicates(sold_stocks)

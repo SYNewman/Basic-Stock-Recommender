@@ -1,14 +1,7 @@
-import yfinance as yf
-import pandas as pd
 from datetime import datetime
 from functions import *
 import stock_recommender
 from stocks import *
-import SMA
-import RSI
-import moving_averages
-import mean_reversion
-import bollinger_bands
 
 bought_stocks = []
 sold_stocks = []
@@ -26,29 +19,27 @@ def sell_signal(bought_stocks, sold_stocks, ticker, strategy): # Function to gen
     if ticker in bought_stocks:
         bought_stocks.remove(ticker)
         
-stock_recommender.recommend(buy_signal, sell_signal, bought_stocks, sold_stocks, list_of_stocks, remove_duplicates, remove_stocks_in_both_lists)
+stock_recommender.recommend(
+    buy_signal, sell_signal, bought_stocks, sold_stocks, list_of_stocks,
+    remove_duplicates, remove_stocks_in_both_lists)
 
-'''
-next steps:
-- add more stocks
-- add oop
-- add data structures (2/3)
-- make trading algorithms myself
-- add searching / sorting algorithms
-- put together with the django app
-    - put data in database and do other jobs relevant for the job
-    - add a hashed password to the database
-    - make GUI for different web pages
-- Optional other jobs
-    - add more strategies
-    - test
-'''
+# next steps:
+# - add more stocks
+# - add oop
+# - add data structures (2/3)
+# - make trading algorithms myself
+# - add searching / sorting algorithms
+# - put together with the django app
+#     - put data in database and do other jobs relevant for the job
+#     - add a hashed password to the database
+#     - make GUI for different web pages
+# - Optional other jobs
+#     - add more strategies
+#     - test
 
-'''
-Options to add:
-- run stock recommender
-- run specific strategy
-- look for specific stocks (and get their data)
-- sort stocks (by price, ABC, strategy, etc.)
-- Information about strategies
-'''
+# Options to add:
+# - run stock recommender
+# - run specific strategy
+# - look for specific stocks (and get their data)
+# - sort stocks (by price, ABC, strategy, etc.)
+# - Information about strategies
