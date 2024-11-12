@@ -1,7 +1,8 @@
+import time
 import yfinance as yf
 import pandas as pd
 from datetime import datetime
-from main import *
+from functions import *
 from stocks import *
 import SMA
 import RSI

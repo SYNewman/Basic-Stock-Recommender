@@ -1,6 +1,7 @@
 import yfinance as yf
 import pandas as pd
 from datetime import datetime
+from functions import *
 import stock_recommender
 from stocks import *
 import SMA
@@ -24,20 +25,6 @@ def sell_signal(bought_stocks, sold_stocks, ticker, strategy): # Function to gen
     sold_stocks.append(ticker)
     if ticker in bought_stocks:
         bought_stocks.remove(ticker)
-
-def remove_duplicates(list): # Function to remove duplicates from the list
-    for i in list:
-        amount = list.count(i)
-        if amount > 1:
-            while amount > 1:
-                list.remove(i)
-                amount = list.count(i)
-
-def remove_stocks_in_both_lists(bought_stocks, sold_stocks): # Function to remove stocks which appear in both lists
-    for i in bought_stocks:
-        if i in sold_stocks:
-            bought_stocks.remove(i)
-            sold_stocks.remove(i)
         
 stock_recommender.recommend(buy_signal, sell_signal, bought_stocks, sold_stocks, list_of_stocks, remove_duplicates, remove_stocks_in_both_lists)
 
