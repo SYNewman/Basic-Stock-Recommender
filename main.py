@@ -12,6 +12,18 @@ bought_stocks = []
 sold_stocks = []
 time = datetime.now() # Calculates the exact time
 
+def buy_signal(bought_stocks, sold_stocks, ticker, strategy): # Function to generate buy signals
+    print(f"BUY   {ticker}   {strategy}")
+    bought_stocks.append(ticker)
+    if ticker in sold_stocks:
+        sold_stocks.remove(ticker)
+
+def sell_signal(bought_stocks, sold_stocks, ticker, strategy): # Function to generate sell signals
+    print(f"SELL  {ticker}   {strategy}")
+    sold_stocks.append(ticker)
+    if ticker in bought_stocks:
+        bought_stocks.remove(ticker)
+
 def remove_duplicates(list): # Function to remove duplicates from the list
     for i in list:
         amount = list.count(i)
@@ -55,11 +67,11 @@ for i in list_of_stocks: # Main program
     lower_band = data['Lower_band'].iloc[-1]
     
     # Runs each strategy
-    moving_averages.moving_averages(bought_stocks, sold_stocks, ticker, price, short_ma, long_ma)
-    SMA.SMA(bought_stocks, sold_stocks, ticker, short_ma, long_ma)
-    #mean_reversion.mean_reversion(bought_stocks, sold_stocks, ticker, price, short_ma)
-    RSI.RSI(data, bought_stocks, sold_stocks, ticker, stock, price, RSI_value)
-    bollinger_bands.bollinger_bands(bought_stocks, sold_stocks, ticker, price, upper_band, middle_band, lower_band)
+    moving_averages.moving_averages(buy_signal, sell_signal, bought_stocks, sold_stocks, ticker, price, short_ma, long_ma)
+    SMA.SMA(buy_signal, sell_signal, bought_stocks, sold_stocks, ticker, short_ma, long_ma)
+    #mean_reversion.mean_reversion(buy_signal, sell_signal, bought_stocks, sold_stocks, ticker, price, short_ma)
+    RSI.RSI(buy_signal, sell_signal, data, bought_stocks, sold_stocks, ticker, stock, price, RSI_value)
+    bollinger_bands.bollinger_bands(buy_signal, sell_signal, bought_stocks, sold_stocks, ticker, price, upper_band, middle_band, lower_band)
     
 remove_duplicates(bought_stocks)
 remove_duplicates(sold_stocks)
@@ -75,13 +87,12 @@ print("Run at: ", time) # Prints the time which the programme was run at
 next steps:
 - main app
     - add more stocks
-    - (add function to add stocks to list of bought/sold stocks)
 - test
 - make more advanced
     - add oop
     - add data structures (2/3)
     - make trading strategies myself
-    - 
+    - add searching / sorting algorithms
 - put together with the django app
     - put data in database and do other jobs relevant for the job
     - during this stage, keep adding strategies etc. in this app
