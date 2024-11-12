@@ -57,7 +57,7 @@ for i in list_of_stocks: # Main program
     # Runs each strategy
     moving_averages.moving_averages(bought_stocks, sold_stocks, ticker, price, short_ma, long_ma)
     SMA.SMA(bought_stocks, sold_stocks, ticker, short_ma, long_ma)
-    mean_reversion.mean_reversion(bought_stocks, sold_stocks, ticker, price, short_ma)
+    #mean_reversion.mean_reversion(bought_stocks, sold_stocks, ticker, price, short_ma)
     RSI.RSI(data, bought_stocks, sold_stocks, ticker, stock, price, RSI_value)
     bollinger_bands.bollinger_bands(bought_stocks, sold_stocks, ticker, price, upper_band, middle_band, lower_band)
     
@@ -75,7 +75,6 @@ print("Run at: ", time) # Prints the time which the programme was run at
 next steps:
 - main app
     - add more stocks
-    - add Bollinger Bands strategy
     - (add function to add stocks to list of bought/sold stocks)
 - test
 - make more advanced
