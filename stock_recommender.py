@@ -1,4 +1,3 @@
-import time
 import yfinance as yf
 import pandas as pd
 from datetime import datetime
@@ -58,4 +57,6 @@ def recommend(buy_signal, sell_signal, bought_stocks, sold_stocks, list_of_stock
     
     print("\n", "Buy: ", bought_stocks) # Prints the list of bought stocks
     print(" Sell:", sold_stocks, "\n") # Prints the list of sold stocks
+    
+    time = datetime.now()
     print("Run at: ", time) # Prints the time which the programme was run at
