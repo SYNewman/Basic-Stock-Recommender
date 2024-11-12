@@ -46,12 +46,20 @@ for i in list_of_stocks: # Main program
     RS_value = average_gains / average_losses
     RSI_value = 100 - (100 / (1 + RS_value))
     
+    # Gets the data needed for the bollinger bands strategy
+    data['Middle_band'] = data['Close'].rolling(window=20).mean()
+    data['Upper_band'] = data['Middle_band'] + (data['Close'].rolling(window=20).std() * 2)
+    data['Lower_band'] = data['Middle_band'] - (data['Close'].rolling(window=20).std() * 2)
+    upper_band = data['Upper_band'].iloc[-1]
+    middle_band = data['Middle_band'].iloc[-1]
+    lower_band = data['Lower_band'].iloc[-1]
+    
     # Runs each strategy
     moving_averages.moving_averages(bought_stocks, sold_stocks, ticker, price, short_ma, long_ma)
     SMA.SMA(bought_stocks, sold_stocks, ticker, short_ma, long_ma)
     mean_reversion.mean_reversion(bought_stocks, sold_stocks, ticker, price, short_ma)
     RSI.RSI(data, bought_stocks, sold_stocks, ticker, stock, price, RSI_value)
-    bollinger_bands.bollinger_bands(bought_stocks, sold_stocks, ticker, price)
+    bollinger_bands.bollinger_bands(bought_stocks, sold_stocks, ticker, price, upper_band, middle_band, lower_band)
     
 remove_duplicates(bought_stocks)
 remove_duplicates(sold_stocks)
@@ -73,7 +81,9 @@ next steps:
 - test
 - make more advanced
     - add oop
-    - add data structures
+    - add data structures (2/3)
+    - make trading strategies myself
+    - 
 - put together with the django app
     - put data in database and do other jobs relevant for the job
     - during this stage, keep adding strategies etc. in this app
