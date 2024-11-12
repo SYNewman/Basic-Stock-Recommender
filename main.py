@@ -45,11 +45,15 @@ for i in list_of_stocks: # Main program
     price = stock.fast_info['last_price']
     data = stock.history(period="1y")
     
-    # Gets data for moving averages and mean reversion strategies
+    # Gets data for moving averages (and mean reversion) strategies
     data['Short_MA'] = data['Close'].rolling(window=50).mean()  # Calculates the 50-day SMA
     data['Long_MA'] = data['Close'].rolling(window=200).mean() # Calculates the 200-day SMA
     short_ma = data['Short_MA'].iloc[-1]
     long_ma = data['Long_MA'].iloc[-1]
+    
+    # Code to get data for mean reversion strategy
+    lower_bound = short_ma * 0.95
+    upper_bound = short_ma * 1.05
     
     # Code to calculate the RSI
     delta = data['Close'].diff()
@@ -69,7 +73,7 @@ for i in list_of_stocks: # Main program
     # Runs each strategy
     moving_averages.moving_averages(buy_signal, sell_signal, bought_stocks, sold_stocks, ticker, price, short_ma, long_ma)
     SMA.SMA(buy_signal, sell_signal, bought_stocks, sold_stocks, ticker, short_ma, long_ma)
-    #mean_reversion.mean_reversion(buy_signal, sell_signal, bought_stocks, sold_stocks, ticker, price, short_ma)
+    #mean_reversion.mean_reversion(buy_signal, sell_signal, bought_stocks, sold_stocks, ticker, price, upper_bound, lower_bound)
     RSI.RSI(buy_signal, sell_signal, data, bought_stocks, sold_stocks, ticker, stock, price, RSI_value)
     bollinger_bands.bollinger_bands(buy_signal, sell_signal, bought_stocks, sold_stocks, ticker, price, upper_band, middle_band, lower_band)
     
