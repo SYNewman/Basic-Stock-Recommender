@@ -39,17 +39,7 @@ def remove_stocks_in_both_lists(bought_stocks, sold_stocks): # Function to remov
             bought_stocks.remove(i)
             sold_stocks.remove(i)
         
-stock_recommender.recommend(buy_signal, sell_signal, bought_stocks, sold_stocks, list_of_stocks)
-
-remove_duplicates(bought_stocks)
-remove_duplicates(sold_stocks)
-
-remove_stocks_in_both_lists(bought_stocks, sold_stocks)
-    
-print("\n", "Buy: ", bought_stocks) # Prints the list of bought stocks
-print(" Sell:", sold_stocks, "\n") # Prints the list of sold stocks
-print("Run at: ", time) # Prints the time which the programme was run at
-
+stock_recommender.recommend(buy_signal, sell_signal, bought_stocks, sold_stocks, list_of_stocks, remove_duplicates, remove_stocks_in_both_lists)
 
 '''
 next steps:
@@ -65,4 +55,13 @@ next steps:
 - Optional other jobs
     - add more strategies
     - test
+'''
+
+'''
+Options to add:
+- run stock recommender
+- run specific strategy
+- look for specific stocks (and get their data)
+- sort stocks (by price, ABC, strategy, etc.)
+- Information about strategies
 '''
