@@ -18,27 +18,33 @@ def sell_signal(bought_stocks, sold_stocks, ticker, strategy): # Function to gen
     sold_stocks.append(ticker)
     if ticker in bought_stocks:
         bought_stocks.remove(ticker)
+
+def display_menu():
+    print("\n\n\nOptions")
+    print("1. Run stock recommender")
+    print("2. Run specific strategy")
+    print("3. Look for specific stocks")
+    print("4. Sort stocks")
+    print("5. Exit")
         
 
-stock_recommender.recommend(
-            buy_signal, sell_signal, bought_stocks, sold_stocks, list_of_stocks,
-            remove_duplicates, remove_stocks_in_both_lists)
+#stock_recommender.recommend(
+            #buy_signal, sell_signal, bought_stocks, sold_stocks, list_of_stocks,
+            #remove_duplicates, remove_stocks_in_both_lists)
 
 while True:
-    print("Options\n 1.Run stock recommender\n 2. Run specific strategy\n 3. Look for specific stocks\n 4. Sort stocks\n 5. Exit\n")
+    display_menu()
     choice = input("Your choice is: ")
     if choice == "1":
         stock_recommender.recommend(
             buy_signal, sell_signal, bought_stocks, sold_stocks, list_of_stocks,
             remove_duplicates, remove_stocks_in_both_lists)
     elif choice == "2":
-        pass
+        print("Choice 2")
     elif choice == "3":
         find_stock(bought_stocks, sold_stocks)
-        pass
     elif choice == "4":
         sort_stocks(bought_stocks, sold_stocks)
-        pass
     else:
         break
 
@@ -46,8 +52,7 @@ while True:
 # - add more stocks
 # - add oop
 # - add data structures (2/3)
-# - make trading algorithms myself
-# - add searching / sorting algorithms
+# - make strategy, search, sort algorithms myself
 # - put together with the django app
 #     - put data in database and do other jobs relevant for the job
 #     - add a hashed password to the database
