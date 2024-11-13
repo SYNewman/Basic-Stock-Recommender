@@ -34,11 +34,11 @@ def recommend(buy_signal, sell_signal, bought_stocks, sold_stocks, list_of_stock
         RSI_value = 100 - (100 / (1 + RS_value))
         
         # Gets the data needed for the bollinger bands strategy
-        #data['Middle_band'] = data['Close'].rolling(window=20).mean()
+        data['Middle_band'] = data['Close'].rolling(window=20).mean()
         data['Upper_band'] = data['Middle_band'] + (data['Close'].rolling(window=20).std() * 2)
         data['Lower_band'] = data['Middle_band'] - (data['Close'].rolling(window=20).std() * 2)
         upper_band = data['Upper_band'].iloc[-1]
-        #middle_band = data['Middle_band'].iloc[-1]
+        middle_band = data['Middle_band'].iloc[-1]
         lower_band = data['Lower_band'].iloc[-1]
         
         # Runs each strategy
@@ -56,7 +56,7 @@ def recommend(buy_signal, sell_signal, bought_stocks, sold_stocks, list_of_stock
             ticker, stock, price, RSI_value)
         bollinger_bands.bollinger_bands(
             buy_signal, sell_signal, bought_stocks, sold_stocks,
-            ticker, price, upper_band, lower_band)
+            ticker, price, upper_band, middle_band, lower_band)
     
     remove_duplicates(bought_stocks)
     remove_duplicates(sold_stocks)

@@ -19,9 +19,28 @@ def sell_signal(bought_stocks, sold_stocks, ticker, strategy): # Function to gen
     if ticker in bought_stocks:
         bought_stocks.remove(ticker)
         
+
 stock_recommender.recommend(
-    buy_signal, sell_signal, bought_stocks, sold_stocks, list_of_stocks,
-    remove_duplicates, remove_stocks_in_both_lists)
+            buy_signal, sell_signal, bought_stocks, sold_stocks, list_of_stocks,
+            remove_duplicates, remove_stocks_in_both_lists)
+
+while True:
+    print("Options\n 1.Run stock recommender\n 2. Run specific strategy\n 3. Look for specific stocks\n 4. Sort stocks\n 5. Exit\n")
+    choice = input("Your choice is: ")
+    if choice == "1":
+        stock_recommender.recommend(
+            buy_signal, sell_signal, bought_stocks, sold_stocks, list_of_stocks,
+            remove_duplicates, remove_stocks_in_both_lists)
+    elif choice == "2":
+        pass
+    elif choice == "3":
+        find_stock(bought_stocks, sold_stocks)
+        pass
+    elif choice == "4":
+        sort_stocks(bought_stocks, sold_stocks)
+        pass
+    else:
+        break
 
 # next steps:
 # - add more stocks
@@ -42,4 +61,3 @@ stock_recommender.recommend(
 # - run specific strategy
 # - look for specific stocks (and get their data)
 # - sort stocks (by price, ABC, strategy, etc.)
-# - Information about strategies
